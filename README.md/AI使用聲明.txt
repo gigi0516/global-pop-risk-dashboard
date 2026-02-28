@@ -1,0 +1,19 @@
+# Global Population & Geopolitical Risk Dashboard
+
+## 專案簡介
+本專案呈現全球人口預測與伊朗地緣政治風險分析，結合 Python 資料處理與 AI 助力生成圖表與分析，最終以互動式 GitHub Pages 網站呈現。
+
+---
+
+## AI 使用聲明
+本專案使用 AI 協助生成：
+- 世界人口趨勢圖表（使用 AI 圖像生成工具）
+- Iran Risk Matrix 初步分析建議
+- Python 資料清理程式提示
+
+> 所有最終數據與分析皆經人工驗證。
+
+---
+
+## Prompt 範例
+範例 Python 資料處理：

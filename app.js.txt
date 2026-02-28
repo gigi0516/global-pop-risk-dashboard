@@ -1,0 +1,25 @@
+fetch("data/cleaned.json")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("population-container");
+
+    data.data.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h2>${item.year}</h2>
+        <p>人口：${item.population.toLocaleString()}</p>
+      `;
+      container.appendChild(card);
+    });
+
+    // 顯示 CAGR
+    const cagrCard = document.createElement("div");
+    cagrCard.className = "card";
+    cagrCard.innerHTML = `
+      <h2>CAGR</h2>
+      <p>${data.cagr}%</p>
+    `;
+    container.appendChild(cagrCard);
+  })
+  .catch(error => console.error("讀取 JSON 失敗:", error));
