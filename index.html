@@ -5,7 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Global Population & Geopolitical Risk Dashboard</title>
 <style>
-body { font-family: Arial; margin: 0; padding: 0; }
+body { 
+  font-family: Arial, sans-serif; 
+  font-size: 16px;           /* 文字大小 */
+  line-height: 1.6; 
+  margin: 0; 
+  padding: 0; 
+}
+
+a { 
+  color: #2980B9; 
+  text-decoration: none; 
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+}
 header { background-color: #2E86C1; color: white; padding: 20px; text-align: center; }
 section { padding: 20px; max-width: 900px; margin: auto; }
 table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -111,22 +128,7 @@ fetch('data/cleaned.json')
             <td>Bloomberg</td>
         </tr>
     </table>
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-th {
-  background-color: #2980B9;
-  color: white;
-  padding: 10px;
-}
-td {
-  padding: 10px;
-}
+
 </section>
 
 <!-- 方法論區塊 -->
