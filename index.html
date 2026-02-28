@@ -13,6 +13,7 @@
         th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
         th { background-color: #f0f0f0; }
         img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
+        pre { background-color: #f8f8f8; padding: 10px; border: 1px solid #ccc; overflow-x: auto; }
         @media (max-width: 600px) {
             body { padding: 5px; }
             table { font-size: 12px; }
@@ -34,11 +35,8 @@
     <div id="population-data">
         <!-- JSON 會在這裡顯示 -->
     </div>
-  <div style="text-align: center; margin: 20px 0;">
-    <img src="population_forecast.png" alt="World Population Forecast" style="max-width: 100%; height: auto; border-radius: 8px; shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <p style="font-size: 0.8rem; color: #666;">Data Source: AI Generated based on UN Prospects</p>
-</div>
-<p style="font-size: 0.8rem; color: gray;">來源：AI 生成 (Gemini)</p>
+    <img src="population_chart.png" alt="World Population Forecast 2024-2100" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
+    <p style="font-size: 0.8rem; color: gray;">圖表來源：AI 生成 (Gemini)</p>
     <p>資料來源：UN World Population Prospects 2024</p>
 </section>
 
@@ -84,23 +82,32 @@
     <h2>方法論</h2>
     <p><strong>AI 使用方式：</strong>生成圖表、Risk Matrix 初稿、Python 資料清理程式提示。</p>
     <p><strong>資料驗證方式：</strong>人口數據與 UN World Population Prospects 對照，Risk Matrix 推論由人工核對來源。</p>
+    <p><strong>Prompt 範例：</strong> "Generate a population forecast chart for 2024, 2030, 2050, 2100 based on UN data"</p>
 </section>
 
 <!-- JSON 串接腳本 -->
+<section>
+    <h2>人口資料顯示 (JSON)</h2>
+    <pre id="json-display"></pre>
+</section>
+
 <script>
 fetch('data/cleaned.json')
 .then(response => response.json())
 .then(data => {
     const container = document.getElementById('population-data');
-    data.data.forEach(item => {
+    // 顯示清理後的人口資料
+    for (const year in data.data) {
         const p = document.createElement('p');
-        p.textContent = `年份：${item.year}，人口：${item.population.toLocaleString()}`;
+        p.textContent = `年份：${year}，人口：${data.data[year].toLocaleString()} 人`;
         container.appendChild(p);
-    });
+    }
+
+    // 顯示 JSON 結果
+    const pre = document.getElementById('json-display');
+    pre.textContent = JSON.stringify(data, null, 2);
 });
 </script>
 
 </body>
 </html>
-<img src="population_chart.png" alt="World Population Forecast">
-<p>資料來源：UN World Population Prospects 2024</p>
