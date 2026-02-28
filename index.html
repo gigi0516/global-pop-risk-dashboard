@@ -93,44 +93,12 @@ fetch('data/cleaned.json')
         const p = document.createElement('p');
         p.textContent = `年份：${item.year}，人口：${item.population.toLocaleString()}`;
         container.appendChild(p);
-    });
-});
-</script>
-<section>
-  <h2>人口表格與成長率</h2>
-  <table>
-    <tr>
-      <th>年份</th>
-      <th>人口</th>
-    </tr>
-    <tr>
-      <td>2024</td>
-      <td id="pop2024"></td>
-    </tr>
-    <tr>
-      <td>2030</td>
-      <td id="pop2030"></td>
-    </tr>
-    <tr>
-      <td>2050</td>
-      <td id="pop2050"></td>
-    </tr>
-    <tr>
-      <td>2100</td>
-      <td id="pop2100"></td>
-    </tr>
-  </table>
-  <p>CAGR: <span id="cagr"></span>%</p>
-  <p>平均年成長率: <span id="avg-growth"></span>%</p>
-</section>
- data.data.forEach(item => {
-        if(item.year === 2024) document.getElementById('pop2024').textContent = item.population.toLocaleString();
+ if(item.year === 2024) document.getElementById('pop2024').textContent = item.population.toLocaleString();
         if(item.year === 2030) document.getElementById('pop2030').textContent = item.population.toLocaleString();
         if(item.year === 2050) document.getElementById('pop2050').textContent = item.population.toLocaleString();
         if(item.year === 2100) document.getElementById('pop2100').textContent = item.population.toLocaleString();
     });
-
-    // CAGR
+  // CAGR 計算
     const popStart = data.data.find(d => d.year === 2024).population;
     const popEnd = data.data.find(d => d.year === 2100).population;
     const years = 2100 - 2024;
@@ -140,7 +108,7 @@ fetch('data/cleaned.json')
 
     // 平均年成長率
     const growthRates = [];
-    for(let i=1; i<data.data.length; i++){
+    for(let i = 1; i < data.data.length; i++){
         const prev = data.data[i-1].population;
         const curr = data.data[i].population;
         growthRates.push((curr - prev)/prev*100);
@@ -154,11 +122,4 @@ fetch('data/cleaned.json')
 </script>
 
 </body>
-</html>
-
-</body>
-<section>
-<img src="population_chart.png" alt="World Population Forecast">
-<p>資料來源：UN World Population Prospects 2024</p>
-<section>
-</html>                                       
+</html>                          
