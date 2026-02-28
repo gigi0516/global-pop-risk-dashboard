@@ -95,7 +95,21 @@ fetch('data/cleaned.json')
     });
 });
 </script>
-
+// 確保檔案路徑正確，指向你 repo 中的 /data/cleaned.json
+fetch('data/cleaned.json')
+    .then(response => {
+        if (!response.ok) throw new Error('找不到數據檔案');
+        return response.json();
+    })
+    .then(data => {
+        // 將 JSON 中的數據填入 HTML 標籤
+        document.getElementById('cagr-val').innerText = data.cagr_percent;
+        document.getElementById('growth-val').innerText = data.total_growth;
+    })
+    .catch(error => {
+        console.error('讀取 JSON 失敗:', error);
+        document.getElementById('cagr-val').innerText = '數據讀取錯誤';
+    });
 </body>
 </html>
 <img src="population_chart.png" alt="World Population Forecast">
