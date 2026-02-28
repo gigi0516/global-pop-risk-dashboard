@@ -108,12 +108,14 @@ fetch('data/cleaned.json')
     document.getElementById('json-display').textContent = JSON.stringify(data, null, 2);
 
     // 將人口填入表格
-    data.data.forEach(item => {
-        if(item.year === 2024) document.getElementById('pop2024').textContent = item.population.toLocaleString();
-        if(item.year === 2030) document.getElementById('pop2030').textContent = item.population.toLocaleString();
-        if(item.year === 2050) document.getElementById('pop2050').textContent = item.population.toLocaleString();
-        if(item.year === 2100) document.getElementById('pop2100').textContent = item.population.toLocaleString();
-    });
+    {
+  "data": [
+    {"year":2024,"population":8050000000},
+    {"year":2030,"population":8520000000},
+    {"year":2050,"population":9730000000},
+    {"year":2100,"population":10420000000}
+  ]
+}
 
     // 計算 CAGR 2024-2100
     const popStart = data.data.find(d => d.year === 2024).population;
