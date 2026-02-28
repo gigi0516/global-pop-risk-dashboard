@@ -87,26 +87,50 @@
     </table>
 </section>
 
-<!-- 方法論 -->
-<section id="methodology">
-    <h2>方法論</h2>
-    <p><strong>AI 使用方式：</strong>使用 ChatGPT 協助整理資料、生成表格範例，並用 Python 清理人口數據與計算成長率。</p>
-    <p><strong>資料驗證：</strong>人口數據以 UN World Population Prospects 為主，對比 Our World in Data，確認不同 AI 給出的數字差異，採取官方統計為準。</p>
+<section>
+    <h3>方法論</h3>
+    <p>AI 使用方式：...</p>
+    <p>2024-2100 複合年均增長率: <span id="cagr-val">計算中...</span>%</p>
+    <p>總成長率: <span id="growth-val">計算中...</span>%</p>
 </section>
 
-<!-- JSON 串接範例 -->
 <script>
-    fetch('../data/cleaned.json')
-    .then(response => response.json())
+fetch('data/cleaned.json')
+    .then(response => {
+        if (!response.ok) throw new Error('找不到數據');
+        return response.json();
+    })
     .then(data => {
-        const tbody = document.getElementById('population-table');
-        data.forEach(item => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${item.year}</td><td>${item.population}</td>`;
-            tbody.appendChild(tr);
-        });
+        document.getElementById('cagr-val').innerText = data.cagr_percent;
+        document.getElementById('growth-val').innerText = data.total_growth;
+    })
+    .catch(error => {
+        console.error('錯誤:', error);
+        document.getElementById('cagr-val').innerText = '讀取失敗';
     });
 </script>
 
+<section>
+    <h3>方法論</h3>
+    <p>AI 使用方式：...</p>
+    <p>2024-2100 複合年均增長率: <span id="cagr-val">計算中...</span>%</p>
+    <p>總成長率: <span id="growth-val">計算中...</span>%</p>
+</section>
+
+<script>
+fetch('data/cleaned.json')
+    .then(response => {
+        if (!response.ok) throw new Error('找不到數據');
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById('cagr-val').innerText = data.cagr_percent;
+        document.getElementById('growth-val').innerText = data.total_growth;
+    })
+    .catch(error => {
+        console.error('錯誤:', error);
+        document.getElementById('cagr-val').innerText = '讀取失敗';
+    });
+</script>
 </body>
 </html>
