@@ -34,7 +34,11 @@
     <div id="population-data">
         <!-- JSON 會在這裡顯示 -->
     </div>
-    <img src="population_chart.png" alt="World Population Forecast">
+  <div style="text-align: center; margin: 20px 0;">
+    <img src="population_forecast.png" alt="World Population Forecast" style="max-width: 100%; height: auto; border-radius: 8px; shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 0.8rem; color: #666;">Data Source: AI Generated based on UN Prospects</p>
+</div>
+<p style="font-size: 0.8rem; color: gray;">來源：AI 生成 (Gemini)</p>
     <p>資料來源：UN World Population Prospects 2024</p>
 </section>
 
@@ -95,21 +99,7 @@ fetch('data/cleaned.json')
     });
 });
 </script>
-// 確保檔案路徑正確，指向你 repo 中的 /data/cleaned.json
-fetch('data/cleaned.json')
-    .then(response => {
-        if (!response.ok) throw new Error('找不到數據檔案');
-        return response.json();
-    })
-    .then(data => {
-        // 將 JSON 中的數據填入 HTML 標籤
-        document.getElementById('cagr-val').innerText = data.cagr_percent;
-        document.getElementById('growth-val').innerText = data.total_growth;
-    })
-    .catch(error => {
-        console.error('讀取 JSON 失敗:', error);
-        document.getElementById('cagr-val').innerText = '數據讀取錯誤';
-    });
+
 </body>
 </html>
 <img src="population_chart.png" alt="World Population Forecast">
