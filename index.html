@@ -14,10 +14,9 @@
   th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
   th { background-color: #f0f0f0; }
   img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
-  @media (max-width: 600px) {
-    body { padding: 5px; }
-    table { font-size: 12px; display: block; overflow-x: auto; }
-  }
+ @media (max-width: 600px) {
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+}
 </style>
 </head>
 <body>
@@ -35,8 +34,9 @@
   <div id="population-data">
     <!-- JSON 會在這裡顯示 -->
   </div>
-  <img images/population_forecast.png
-       loading="lazy">
+ <img src="images/population_forecast.png" 
+     alt="World Population Forecast 2024-2100" 
+     loading="lazy">
   <p style="font-size: 0.8rem; color: gray;">來源：AI 生成 (Gemini)</p>
   <p>資料來源：UN World Population Prospects 2024</p>
 </section>
