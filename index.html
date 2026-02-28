@@ -123,29 +123,38 @@ fetch('data/cleaned.json')
   <p>CAGR: <span id="cagr"></span>%</p>
   <p>平均年成長率: <span id="avg-growth"></span>%</p>
 </section>
-data.data.forEach(item => {
-    if(item.year === 2024) document.getElementById('pop2024').textContent = item.population.toLocaleString();
-    if(item.year === 2030) document.getElementById('pop2030').textContent = item.population.toLocaleString();
-    if(item.year === 2050) document.getElementById('pop2050').textContent = item.population.toLocaleString();
-    if(item.year === 2100) document.getElementById('pop2100').textContent = item.population.toLocaleString();
-});
+ data.data.forEach(item => {
+        if(item.year === 2024) document.getElementById('pop2024').textContent = item.population.toLocaleString();
+        if(item.year === 2030) document.getElementById('pop2030').textContent = item.population.toLocaleString();
+        if(item.year === 2050) document.getElementById('pop2050').textContent = item.population.toLocaleString();
+        if(item.year === 2100) document.getElementById('pop2100').textContent = item.population.toLocaleString();
+    });
 
-const popStart = data.data.find(d => d.year === 2024).population;
-const popEnd = data.data.find(d => d.year === 2100).population;
-const years = 2100 - 2024;
-const cagr = (Math.pow(popEnd / popStart, 1 / years) - 1) * 100;
-document.getElementById('cagr').textContent = cagr.toFixed(2);
+    // CAGR
+    const popStart = data.data.find(d => d.year === 2024).population;
+    const popEnd = data.data.find(d => d.year === 2100).population;
+    const years = 2100 - 2024;
 
-// 計算平均成長率
-const growthRates = [];
-for(let i=1; i<data.data.length; i++){
-  const prev = data.data[i-1].population;
-  const curr = data.data[i].population;
-  growthRates.push((curr - prev)/prev*100);
-}
-const avgGrowth = growthRates.reduce((a,b)=>a+b,0)/growthRates.length;
-document.getElementById('avg-growth').textContent = avgGrowth.toFixed(2);
+    const cagr = (Math.pow(popEnd / popStart, 1 / years) - 1) * 100;
+    document.getElementById('cagr').textContent = cagr.toFixed(2);
 
+    // 平均年成長率
+    const growthRates = [];
+    for(let i=1; i<data.data.length; i++){
+        const prev = data.data[i-1].population;
+        const curr = data.data[i].population;
+        growthRates.push((curr - prev)/prev*100);
+    }
+
+    const avgGrowth = growthRates.reduce((a,b)=>a+b,0)/growthRates.length;
+    document.getElementById('avg-growth').textContent = avgGrowth.toFixed(2);
+
+})
+.catch(error => console.error("JSON error:", error));
+</script>
+
+</body>
+</html>
 
 </body>
 <section>
@@ -153,4 +162,3 @@ document.getElementById('avg-growth').textContent = avgGrowth.toFixed(2);
 <p>資料來源：UN World Population Prospects 2024</p>
 <section>
 </html>                                       
-<!-- Force update -->
