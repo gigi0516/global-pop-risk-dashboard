@@ -1,89 +1,92 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2E86C1">
-    <title>Global Population & Geopolitical Risk Dashboard</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.5; }
-        header { background-color: #2E86C1; color: white; padding: 20px; text-align: center; }
-        section { padding: 20px; max-width: 900px; margin: auto; }
-        h2 { color: #2E86C1; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-        th { background-color: #f0f0f0; }
-        img { max-width: 100%; height: auto; display: block; margin: 10px auto;}
-        @media (max-width: 600px) {
-            body { padding: 5px; }
-            table { font-size: 12px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2E86C1">
+<title>Global Population & Geopolitical Risk Dashboard</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.5; }
+  header { background-color: #2E86C1; color: white; padding: 20px; text-align: center; }
+  section { padding: 20px; max-width: 900px; margin: auto; }
+  h2 { color: #2E86C1; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+  th { background-color: #f0f0f0; }
+  img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
+  @media (max-width: 600px) {
+    body { padding: 5px; }
+    table { font-size: 12px; display: block; overflow-x: auto; }
+  }
+</style>
 </head>
 <body>
 
 <!-- 首頁 Landing Page -->
 <header>
-    <h1>Global Population & Geopolitical Risk Dashboard</h1>
-    <p>研究主張：分析全球人口趨勢與伊朗地緣政治風險，提供決策參考。</p>
-    <p>作者：黃晴筠</p>
+  <h1>Global Population & Geopolitical Risk Dashboard</h1>
+  <p>研究主張：分析全球人口趨勢與伊朗地緣政治風險，提供決策參考。</p>
+  <p>作者：黃晴筠</p>
 </header>
 
 <!-- 世界人口預測區塊 -->
 <section>
-    <h2>世界人口預測</h2>
-    <div id="population-data">
-        <!-- JSON 會在這裡顯示 -->
-    </div>
-   <img src="population_forecast.png"
-     alt="World Population Forecast 2024-2100"
-      style="max-width: 100%; height: auto; border: 1px solid #ccc;">
-<p style="font-size: 0.8rem; color: gray;">來源：AI 生成 (Gemini)</p>
-    <p>資料來源：UN World Population Prospects 2024</p>
+  <h2>世界人口預測</h2>
+  <div id="population-data">
+    <!-- JSON 會在這裡顯示 -->
+  </div>
+  <img src="population_forecast.png"
+       alt="World Population Forecast 2024-2100"
+       style="border: 1px solid #ccc;"
+       loading="lazy">
+  <p style="font-size: 0.8rem; color: gray;">來源：AI 生成 (Gemini)</p>
+  <p>資料來源：UN World Population Prospects 2024</p>
 </section>
 
 <!-- 伊朗地緣政治風險分析 -->
 <section>
-    <h2>Iran Risk Matrix</h2>
+  <h2>Iran Risk Matrix</h2>
+  <div style="overflow-x:auto;">
     <table>
-        <tr>
-            <th>風險因子</th>
-            <th>機率</th>
-            <th>影響程度</th>
-            <th>資料來源</th>
-        </tr>
-        <tr>
-            <td>政治不穩定 (事實)</td>
-            <td>高</td>
-            <td>高</td>
-            <td>Reuters</td>
-        </tr>
-        <tr>
-            <td>國際制裁 (事實)</td>
-            <td>中</td>
-            <td>高</td>
-            <td>UN News</td>
-        </tr>
-        <tr>
-            <td>軍事衝突風險 (推論)</td>
-            <td>低</td>
-            <td>高</td>
-            <td>AI 推論</td>
-        </tr>
-        <tr>
-            <td>能源價格波動 (推論)</td>
-            <td>中</td>
-            <td>中</td>
-            <td>Bloomberg</td>
-        </tr>
+      <tr>
+        <th>風險因子</th>
+        <th>機率</th>
+        <th>影響程度</th>
+        <th>資料來源</th>
+      </tr>
+      <tr>
+        <td>政治不穩定 (事實)</td>
+        <td>高</td>
+        <td>高</td>
+        <td>Reuters</td>
+      </tr>
+      <tr>
+        <td>國際制裁 (事實)</td>
+        <td>中</td>
+        <td>高</td>
+        <td>UN News</td>
+      </tr>
+      <tr>
+        <td>軍事衝突風險 (推論)</td>
+        <td>低</td>
+        <td>高</td>
+        <td>AI 推論</td>
+      </tr>
+      <tr>
+        <td>能源價格波動 (推論)</td>
+        <td>中</td>
+        <td>中</td>
+        <td>Bloomberg</td>
+      </tr>
     </table>
+  </div>
 </section>
 
 <!-- 方法論區塊 -->
 <section>
-    <h2>方法論</h2>
-    <p><strong>AI 使用方式：</strong>生成圖表、Risk Matrix 初稿、Python 資料清理程式提示。</p>
-    <p><strong>資料驗證方式：</strong>人口數據與 UN World Population Prospects 對照，Risk Matrix 推論由人工核對來源。</p>
+  <h2>方法論</h2>
+  <p><strong>AI 使用方式：</strong>生成圖表、Risk Matrix 初稿、Python 資料清理程式提示。</p>
+  <p><strong>資料驗證方式：</strong>人口數據與 UN World Population Prospects 對照，Risk Matrix 推論由人工核對來源。</p>
 </section>
 
 <!-- JSON 串接腳本 -->
@@ -97,9 +100,9 @@ fetch('data/cleaned.json')
         p.textContent = `年份：${item.year}，人口：${item.population.toLocaleString()}`;
         container.appendChild(p);
     });
-});
-</script defer>
-<img src="population_chart.png" alt="World Population Forecast">
-<p>資料來源：UN World Population Prospects 2024</p>
+})
+.catch(err => console.error("JSON 資料讀取失敗:", err));
+</script>
+
 </body>
 </html>
