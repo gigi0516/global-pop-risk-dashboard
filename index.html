@@ -35,7 +35,9 @@
     <div id="population-data">
         <!-- JSON 會在這裡顯示 -->
     </div>
-   <img src="population_chart.png" alt="World Population Forecast 2024-2100" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
+   <img src="population_chart.png"
+     alt="World Population Forecast 2024-2100"
+     loading="lazy" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
 <p style="font-size: 0.8rem; color: gray;">來源：AI 生成 (Gemini)</p>
     <p>資料來源：UN World Population Prospects 2024</p>
 </section>
@@ -85,7 +87,7 @@
 </section>
 
 <!-- JSON 串接腳本 -->
-<script>
+<script defer>
 fetch('data/cleaned.json')
 .then(response => response.json())
 .then(data => {
@@ -96,9 +98,8 @@ fetch('data/cleaned.json')
         container.appendChild(p);
     });
 });
-</script>
-
-</body>
-</html>
+</script defer>
 <img src="population_chart.png" alt="World Population Forecast">
 <p>資料來源：UN World Population Prospects 2024</p>
+</body>
+</html>
