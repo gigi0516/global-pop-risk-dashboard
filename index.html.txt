@@ -98,3 +98,5 @@ fetch('data/cleaned.json')
 
 </body>
 </html>
+<img src="population_chart.png" alt="World Population Forecast">
+<p>資料來源：UN World Population Prospects 2024</p>
